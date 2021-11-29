@@ -1,0 +1,28 @@
+1) currency-exchange
+http://localhost:8000/api/exchange/from/USD/to/INR
+
+2) currency-conversion
+http://localhost:8100/api/conversion/from/USD/to/INR/quantity/10
+http://localhost:8100/api/conversion-feign/from/USD/to/INR/quantity/10
+
+3) Eureka 
+http://localhost:8761/
+
+4) API GATEWAY
+# 1) using default gateway discovery locator
+http://localhost:8765/CURRENCY-EXCHANGE-SERVICE/api/exchange/from/USD/to/INR
+http://localhost:8765/CURRENCY-CONVERSION-SERVICE/api/conversion/from/USD/to/INR/quantity/10
+http://localhost:8765/CURRENCY-CONVERSION-SERVICE/api/conversion-feign/from/USD/to/INR/quantity/10
+
+http://localhost:8765/currency-exchange-service/api/exchange/from/USD/to/INR
+http://localhost:8765/currency-conversion-service/api/conversion/from/USD/to/INR/quantity/10
+http://localhost:8765/currency-conversion-service/api/conversion-feign/from/USD/to/INR/quantity/10
+
+# With custom route
+http://localhost:8765/api/exchange/from/USD/to/INR
+http://localhost:8765/api/conversion/from/USD/to/INR/quantity/10
+http://localhost:8765/api/conversion-feign/from/USD/to/INR/quantity/10
+
+
+docker run -p 8761:8761 eureka-service:0.0.1-SNAPSHOT
+docker run -p 8000:8000 currency-exchange-service:0.0.1-SNAPSHOT
